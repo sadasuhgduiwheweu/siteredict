@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando...</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <div id="preloader">
+        <div class="inner">
+            <img src="icon.png" class="spinning-logo" alt="Logo">
+            <div class="loading-text">Carregando...</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let progress = 0;
+        const progressFill = document.querySelector('.progress-fill');
+        const loadingText = document.querySelector('.loading-text');
+        
+        // Animação da barra de progresso
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(progressInterval);
+                loadingText.textContent = 'Redirecionando...';
+                setTimeout(() => {
+                    window.location.href = "https://redfans.66ghz.com/?i=2";
+                }, 500);
+            }
+            progressFill.style.width = progress + '%';
+        }, 150);
+        
+        // Fallback para garantir redirecionamento
+        setTimeout(() => {
+            window.location.href = "https://redfans.66ghz.com/?i=2";
+        }, 4000);
+    </script>
+</body>
+</html>
+

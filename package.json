@@ -1,0 +1,13 @@
+{
+  "name": "redirect-page",
+  "version": "1.0.0",
+  "description": "Página de redirecionamento com logo girando",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}
+

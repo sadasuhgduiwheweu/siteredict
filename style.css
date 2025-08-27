@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Arial', sans-serif;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.spinning-logo {
+    width: 200px;
+    height: 200px;
+    animation: spin 2s linear infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    transition: all 0.3s ease;
+}
+
+.spinning-logo:hover {
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+    transform: scale(1.05);
+}
+
+.loading-text {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff 0%, #cccccc 100%);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .spinning-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .loading-text {
+        font-size: 16px;
+    }
+    
+    .progress-bar {
+        width: 150px;
+    }
+    
+    .inner {
+        gap: 20px;
+    }
+}
+
